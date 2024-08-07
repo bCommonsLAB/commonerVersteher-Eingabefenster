@@ -30,51 +30,14 @@
 </header>
 <div class="container">
     <div class="form-container">
-        <div class="column">
-            <div class="content">
-                <div class="button-container">
-                    <input type="checkbox" id="micButton" class="mic-checkbox">
-                    <label for="micButton" class="mic-button" id="toggle-record-btn">
-                        <div class='mic'>
-                            <div class='mic-button-loader'></div>
-                            <div class="mic-base"></div>
-                        </div>
-                        <div class='mic2'>
-                            <div class="mic-base2"></div>
-                        </div>
-                    </label>
-                </div>
-            </div>
-            <div id="uploaded-audio" style="display: none; margin-top: 50px;">
-                <audio id="audio-player" controls></audio>
-            </div>
-            <div id="drop-area">
-                <p><input type="file" id="fileElem" accept="audio/wav, audio/m4a" onchange="handleFiles(this.files)"></p>
-                <div class='upload-arrow'>
-                    <div class="upload-base"></div>
-                </div>
-            </div>
-        </div>
         <p id="status" class="status"></p>
         <div class="result-grid">
-            <div>    
-                <div class="result-top">
-                    <h2>Transkription</h2>  
-                </div>            
-            <div class="result-bottom">
-                <p id="transcription" class="result"></p>
-                <div class="dropdown">
-                    <div role="button" class="button">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                    <ul>
-                        <li><a href="#" onclick="text2Speech('summary')"><i class="fa-solid fa-volume-high"></i></a></li>
-                        <li><a href="#" onclick="copyText('summary')"><i class="fa-solid fa-copy"></i></a></li>
-                        <li><a href="#" onclick="shareText('summary')"><i class="fa-solid fa-envelope"></i></a></li>
-                    </ul>
-                </div>
+            <div class="result-top">
+                <h2>Transkription</h2>  
+            </div>            
+            <div class="send-wraper">
+                <input placeholder="schreibe etwas" class="result" id="user-text">
+                <button id="sendbutton" class="send-button"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
             </div>
             <div class="betweenresult"></div>
             <div>
@@ -82,19 +45,19 @@
                     <h2>Reflexion deiner Gedanken</h2>  
                 </div>
                 <div class="result-bottom">
-                <p id="reflection" class="result"></p>
-                <div class="dropdown">
-                    <div role="button" class="button">
-                        <div></div>
-                        <div></div>
-                        <div></div>
+                    <p id="reflection" class="result"></p>
+                    <div class="dropdown">
+                        <div role="button" class="button">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <ul>
+                            <li><a href="#" onclick="text2Speech('german-summary')"><i class="fa-solid fa-volume-high"></i></a></li>
+                            <li><a href="#" onclick="copyText('german-summary')"><i class="fa-solid fa-copy"></i></a></li>
+                            <li><a href="#" onclick="shareText('german-summary')"><i class="fa-solid fa-envelope"></i></a></li>
+                        </ul>
                     </div>
-                    <ul>
-                        <li><a href="#" onclick="text2Speech('german-summary')"><i class="fa-solid fa-volume-high"></i></a></li>
-                        <li><a href="#" onclick="copyText('german-summary')"><i class="fa-solid fa-copy"></i></a></li>
-                        <li><a href="#" onclick="shareText('german-summary')"><i class="fa-solid fa-envelope"></i></a></li>
-                    </ul>
-                </div>
                 </div>
             </div>
         </div>
@@ -159,7 +122,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="script/background.js"></script>
-<script src="script/recorder.js"></script>
+<script src="script/send.js"></script>
 <script src="script/sharetext.js"></script>
 <script src="script/copytext.js"></script>
 <script src="script/speechtotext.js"></script>

@@ -194,7 +194,25 @@ p {
   margin-top: 0px;
   width: 90%;
 }
-
+.send-wraper{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.send-button{
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  margin-left: 10px;
+  font-size: 30px;
+  padding-right: 10px;
+  transition: 0.7s;
+}
+.send-button:hover{
+  color: white;
+  background-color: black;
+  transition: 0.7s;
+}
 .result-grid h2 {
   width: fit-content;
   color: white;
