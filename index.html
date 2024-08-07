@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Der Commoning Versteher</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="styles/loader.css">
+    <link rel="stylesheet" href="styles/dropdown.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="loading-screen" style="display: none;">
+        <div class="loader">
+            <div class="inner one"></div>
+            <div class="inner two"></div>
+            <div class="inner three"></div>
+        </div>
+    </div>
+    
+<header>
+    <div class="seitentitel"><p class="titel">Commoning Versteher</p></div>
+    <div class="einführung">
+        <div class="einfuehrungstext" id="text1">Ich bin dein</div>
+    </div>
+</header>
+<div class="container">
+    <div class="form-container">
+        <div class="column">
+            <div class="content">
+                <div class="button-container">
+                    <input type="checkbox" id="micButton" class="mic-checkbox">
+                    <label for="micButton" class="mic-button" id="toggle-record-btn">
+                        <div class='mic'>
+                            <div class='mic-button-loader'></div>
+                            <div class="mic-base"></div>
+                        </div>
+                        <div class='mic2'>
+                            <div class="mic-base2"></div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div id="uploaded-audio" style="display: none; margin-top: 50px;">
+                <audio id="audio-player" controls></audio>
+            </div>
+            <div id="drop-area">
+                <p><input type="file" id="fileElem" accept="audio/wav, audio/m4a" onchange="handleFiles(this.files)"></p>
+                <div class='upload-arrow'>
+                    <div class="upload-base"></div>
+                </div>
+            </div>
+        </div>
+        <p id="status" class="status"></p>
+        <div class="result-grid">
+            <div>    
+                <div class="result-top">
+                    <h2>Transkription</h2>  
+                </div>            
+            <div class="result-bottom">
+                <p id="transcription" class="result"></p>
+                <div class="dropdown">
+                    <div role="button" class="button">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <ul>
+                        <li><a href="#" onclick="text2Speech('summary')"><i class="fa-solid fa-volume-high"></i></a></li>
+                        <li><a href="#" onclick="copyText('summary')"><i class="fa-solid fa-copy"></i></a></li>
+                        <li><a href="#" onclick="shareText('summary')"><i class="fa-solid fa-envelope"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="betweenresult"></div>
+            <div>
+                <div class="result-top">
+                    <h2>Reflexion deiner Gedanken</h2>  
+                </div>
+                <div class="result-bottom">
+                <p id="reflection" class="result"></p>
+                <div class="dropdown">
+                    <div role="button" class="button">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <ul>
+                        <li><a href="#" onclick="text2Speech('german-summary')"><i class="fa-solid fa-volume-high"></i></a></li>
+                        <li><a href="#" onclick="copyText('german-summary')"><i class="fa-solid fa-copy"></i></a></li>
+                        <li><a href="#" onclick="shareText('german-summary')"><i class="fa-solid fa-envelope"></i></a></li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div id="sprachanalyse">
+            <div>
+                <h2>Analyse der Commoning Werte</h2>
+            </div>
+        </div>
+        <div class="center" id="center">
+            <div class="pie animate no-round hover-text" id="circle-gemeinschaft" style="--c:rgb(173, 216, 230); --secondary-color: rgb(113, 112, 114);">
+                <div class="prozent" id="gemeinschaft-prozent"></div>
+                <span class="tooltip-text" id="bottom">Gemeinschaftlichkeit</span>
+            </div> 
+                    
+            <div class="pie animate no-round hover-text" id="circle-vertrauen" style="--c:rgb(178, 224, 164); --secondary-color: rgb(113, 112, 114);">
+                <div class="prozent" id="vertrauen-prozent"></div>
+                <span class="tooltip-text" id="bottom">Vertrauenswürdig</span>
+            </div>
+            
+            <div class="pie animate no-round hover-text" id="circle-gegenseitig" style="--c:rgb(250, 214, 165); --secondary-color: rgb(113, 112, 114);">
+                <div class="prozent" id="gegenseitig-prozent"></div>
+                <span class="tooltip-text" id="bottom">Gegenseitig</span>
+            </div>
+            
+            <div class="pie animate no-round hover-text" id="circle-nachhaltig" style="--c:rgb(230, 230, 250); --secondary-color: rgb(113, 112, 114);">
+                <div class="prozent" id="nachhaltig-prozent"></div>
+                <span class="tooltip-text" id="bottom">Nachhaltig</span>
+            </div>
+            
+            <div class="pie animate no-round hover-text" id="circle-inklusion" style="--c:rgb(255, 209, 220); --secondary-color: rgb(113, 112, 114);">
+                <div class="prozent" id="inklusion-prozent"></div>
+                <span class="tooltip-text" id="bottom">Inklusiv</span>
+            </div>
+            
+        </div>
+        <div id="mustersprachanalyse">
+            <div>
+                <h2>Analyse der Mustersprache des Commoning</h2>
+            </div>
+        </div>
+        <div class="center" id="mustersprache">
+            <div class="pie animate no-round hover-text" id="circle-sozialesmiteinander" style="--c:rgb(152, 255, 152); --secondary-color: rgb(113, 112, 114);">
+                <div class="prozent" id="sozialesmiteinander-prozent"></div>
+                <span class="tooltip-text" id="bottom">Soziales Miteinander</span>
+            </div> 
+            <div class="pie animate no-round hover-text" id="circle-gleichrangigeselbstorganisation" style="--c:rgb(255, 182, 193); --secondary-color: rgb(113, 112, 114);">
+                <div class="prozent" id="gleichrangigeselbstorganisation-prozent"></div>
+                <span class="tooltip-text" id="bottom">Gleichrangige Selbst Organisation</span>
+            </div>
+            <div class="pie animate no-round hover-text" id="circle-sorgendesselbstbestimmteswirtschaften" style="--c:rgb(255, 245, 186); --secondary-color: rgb(113, 112, 114);">
+                <div class="prozent" id="sorgendesselbstbestimmteswirtschaften-prozent"></div>
+                <span class="tooltip-text" id="bottom">Sorgendes Selbstbestimmtes Wirtschaften</span>
+            </div>
+        </div>                
+    </div>
+</div>
+<div id="bg">
+    <canvas class="backgroundcanvas"></canvas>
+    <canvas class="backgroundcanvas"></canvas>
+    <canvas class="backgroundcanvas"></canvas>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="script/background.js"></script>
+<script src="script/recorder.js"></script>
+<script src="script/sharetext.js"></script>
+<script src="script/copytext.js"></script>
+<script src="script/speechtotext.js"></script>
+<script src="script/presentation.js"></script>
+</body>
+</html>

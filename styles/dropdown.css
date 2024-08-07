@@ -1,0 +1,92 @@
+:root {
+  --button-background: rgb(109, 30, 255);
+  --button-color: rgb(0, 0, 0);
+  
+  --dropdown-highlight: rgb(224, 224, 224);
+  --dropdown-width: 50px;
+  --dropdown-background: rgb(87, 87, 87);
+  --dropdown-color: rgb(247, 247, 247);
+}
+
+.button {
+  /* Frame */
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 50px;
+  box-sizing: border-box;
+  /* Style */
+  border: none;
+  background: var(--button-background);
+  color: var(--button-color);
+  cursor: pointer;
+  margin-top: -9px;
+}
+.button div {
+  width: 20px;
+  height: 2px;
+  background-color: black;
+  margin: 6px 0;
+}
+.button:active {
+  filter: brightness(75%);
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown ul {
+  position: absolute;
+  margin: 20px 0 0 0;
+  padding: 20px 0;
+  width: var(--dropdown-width);
+  left: 50%;
+  margin-left: calc((var(--dropdown-width) / 2) * -1);
+  box-sizing: border-box;
+  z-index: 2;
+  background: var(--dropdown-background);
+  border-radius: 6px;
+  list-style: none;
+  display: none; 
+}
+
+.dropdown ul li {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.dropdown ul li a:link, .dropdown ul li a:visited {
+  display: inline-block;
+  padding: 10px 0.8rem;
+  width: 100%;
+  box-sizing: border-box;
+  color: var(--dropdown-color);
+  text-decoration: none;
+}
+
+.dropdown ul li a:hover {
+  background-color: var(--dropdown-highlight);
+  color: var(--dropdown-background);
+}
+
+/* Dropdown triangle */
+.dropdown ul::before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: -10px;
+  left: 50%;
+  margin-left: -10px;
+  border-style: solid;
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent var(--dropdown-background) transparent;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover ul {
+  display: block;
+}
