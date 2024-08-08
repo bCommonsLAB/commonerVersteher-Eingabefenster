@@ -17,6 +17,21 @@ document.addEventListener("DOMContentLoaded", () => {
         sprachanalyse.style.display = 'flex';
         mustersprachanalyse.style.display = 'flex';
         musteranalyse.style.display = 'flex';
+        animateExpansion(centerSprachanalyse);
+        animateExpansion(sprachanalyse);
+        animateExpansion(mustersprachanalyse);
+        animateExpansion(musteranalyse);
+    }
+
+    function animateExpansion(element) {
+        element.animate([
+            { transform: 'scaleY(0)', height: '0px' },
+            { transform: 'scaleY(1)', height: element.scrollHeight + 'px' }
+        ], {
+            duration: 500,
+            easing: 'ease-out',
+            fill: 'forwards'
+        });
     }
 
     function showLoading() {

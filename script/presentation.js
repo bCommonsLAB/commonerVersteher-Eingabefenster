@@ -1,16 +1,20 @@
-const text1 = document.getElementById('text1');
-const text2 = document.getElementById('text2');
+const fullTextout = "Ich bin dein Commoning Versteher und du.... kannst hier deine Überlegungen zu Themen rund ums Commoning einsprechen. Ich werde diese transkribieren, eine kurze Reflexion schreiben und dann bewerten, wie sehr der Text den Idealen des Commonings entspricht.";
+const fullText = "Ich bin dein Commoning Versteher und du kannst hier deine Überlegungen zu Themen rund ums Commoning einsprechen. Ich werde diese transkribieren, eine kurze Reflexion schreiben und dann bewerten, wie sehr der Text den Idealen des Commonings entspricht.";
 
-const fullText1 = "Ich bin dein Commoning Versteher und du kannst hier deine Überlegungen zu Themen rund ums Commoning einsprechen. Ich werde diese Transkribieren eine kurze Reflexion schreiben und dann Bewerten, wie sehr der Text den Idealen des Commonings entspricht.";
+const initialText = fullTextout;
+text1.innerText = fullTextout;
 
-const initialText1 = fullText1.split(' ').slice(0, 5).join(' ') + '...';
-
-text1.innerText = initialText1;
+let timeoutId;
 
 text1.addEventListener('mouseover', () => {
-    text1.innerText = fullText1;
+    clearTimeout(timeoutId);
+    text1.innerText = fullText;
+    text1.style.height = `${text1.scrollHeight}px`;
 });
 
 text1.addEventListener('mouseout', () => {
-    text1.innerText = initialText1;
+    text1.style.height = '17px';
+    timeoutId = setTimeout(() => {
+        text1.innerText = initialText;
+    }, 725);
 });

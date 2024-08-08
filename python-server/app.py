@@ -3,12 +3,48 @@ from flask_cors import CORS
 import requests
 import json
 import config  # Import der neuen config.py
+import os
+import openai
 
 app = Flask(__name__)
 CORS(app)
 
 # API-Schlüssel für OpenAI festlegen
 api_key = config.config['myopenkey']
+openai.api_key = api_key
+
+@app.route('/transcribe', methods=['POST'])
+def transcribe():
+    if 'audio' not in request.files:
+        app.logger.error('Keine Audiodatei gefunden')
+        return jsonify({'error': 'Keine Audiodatei gefunden'}), 400
+
+    audio_file = request.files['audio']
+    audio_file_path = 'audio.mp3'
+    audio_file.save(audio_file_path)
+
+    try:
+        # Audio mit der Whisper API von OpenAI transkribieren
+        with open(audio_file_path, 'rb') as f:
+            response = openai.Audio.transcribe(
+                model="whisper-1",
+                file=f,
+                language="de"
+            )
+        
+        transcript = response['text']
+        language = response.get('language', 'de')  # Standard auf 'de' setzen
+
+        return jsonify({'transcript': transcript, 'language': language}), 200
+
+    except openai.error.OpenAIError as e:
+        app.logger.error(f'Fehler während der Transkription: {e}')
+        return jsonify({'error': f'Fehler während der Transkription: {str(e)}'}), 500
+
+    finally:
+        if os.path.exists(audio_file_path):
+            os.remove(audio_file_path)
+
 
 @app.route('/analyze-text', methods=['POST'])
 def analyze_text():
@@ -43,7 +79,6 @@ def analyze_text():
                 # Extrahiere die Nachricht und verarbeite das JSON
                 message_content = completion_data['choices'][0]['message']['content'].strip()
                 json_result = json.loads(message_content)
-                app.logger.info(json_result)
                 return jsonify(json_result), 200
             except json.JSONDecodeError as e:
                 app.logger.error(f'Fehler beim Dekodieren der JSON-Antwort: {e}')

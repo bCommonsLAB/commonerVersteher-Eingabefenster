@@ -64,7 +64,6 @@ body,
 .center {
   display: flex;
   justify-content: space-evenly;
-  width: 100%;
 }
 .mustersprache {
   display: flex;
@@ -113,17 +112,17 @@ header {
   height: 17px;
   overflow: hidden;
   text-overflow: ellipsis;
-  background-color: #5f3a8f00;
   text-align: center;
   font-size: 15px;
   font-weight: 100;
   border: 1px white dashed;
   border-radius: 10px;
+  transition: height 0.7s, background-color 0.7s;
+  background-color: #7b559f;
 }
 
-.einfuehrungstext:hover {
-  height: fit-content;
-  background-color: #7b559f;
+.einfuehrungstext.expanded {
+  height: auto;
 }
 
 
@@ -199,20 +198,7 @@ p {
   display: flex;
   justify-content: space-between;
 }
-.send-button{
-  width: 70px;
-  height: 70px;
-  border-radius: 100%;
-  margin-left: 10px;
-  font-size: 30px;
-  padding-right: 10px;
-  transition: 0.7s;
-}
-.send-button:hover{
-  color: white;
-  background-color: black;
-  transition: 0.7s;
-}
+
 .result-grid h2 {
   width: fit-content;
   color: white;
@@ -244,116 +230,87 @@ p {
 h2 {
   color: white;
 }
-
-.content {
+.input-mic-wraper{
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  justify-content:left;
+  width: 100%;
 
-.mic-checkbox {
-  display: none;
 }
-
-.mic-checkbox:checked + .mic-button {
-  transform: rotateY(180deg);
-}
-
-.mic-checkbox:checked + .mic-button span {
-  display: none;
-}
-
-.button-container {
-  perspective: 500px;
-  -moz-perspective: 500px;
-  -webkit-perspective: 500px;
-}
-
-.mic-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-  width: 100px;
-  border-radius: 100%;
-  transition: transform 0.4s;
-  border: 2px solid white;
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
+.micbutton {
+  margin-left: 5px;
   position: relative;
+  padding: 10px 20px;
+  border-radius: 7px;
+  border: 1px solid rgb(61, 106, 255);
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+  background: transparent;
+  color: #fff;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
-.mic-button:hover {
-  border:2px solid purple;
+.micbutton:hover {
+  background: rgb(61, 106, 255);
+  box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 
-.button-message, .mic {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
+.micbutton:hover::before {
+  -webkit-animation: sh02 0.5s 0s linear;
+  -moz-animation: sh02 0.5s 0s linear;
+  animation: sh02 0.5s 0s linear;
 }
 
-.mic-button-loader {
+.micbutton::before {
+  content: '';
+  display: block;
+  width: 0px;
+  height: 86%;
   position: absolute;
-  height: 102px;
-  width: 100px;
-  background-color: transparent;
-  transform: rotateY(180deg);
-  top: -31px;
-  left: -50px;
+  top: 7%;
+  left: 0%;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 0 0 50px 30px #fff;
+  -webkit-transform: skewX(-20deg);
+  -moz-transform: skewX(-20deg);
+  -ms-transform: skewX(-20deg);
+  -o-transform: skewX(-20deg);
+  transform: skewX(-20deg);
 }
 
-.mic-checkbox:checked + .mic-button > .mic > .mic-button-loader {
-  border-top: 3px solid #0084ff; /* Green color for the loader */
-  border-radius: 100%;
-  animation: borderLoader 1.3s 0.2s ease-in-out infinite; 
-  background: purple;
+@keyframes sh02 {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    left: 100%;
+  }
 }
 
-.mic, .mic2{
-  position: absolute;
-  top: 18px;
-  height: 20px;
-  width: 0;
-  border: 10px solid white;
-  border-radius: 10px;
-  transform: rotateY(180deg);
+.micbutton:active {
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: box-shadow 0.2s ease-in;
+  -moz-transition: box-shadow 0.2s ease-in;
+  transition: box-shadow 0.2s ease-in;
 }
 
-.mic2:after, .mic2:before, .mic-base2, .mic:after, .mic:before, .mic-base {
-  position: absolute;
-}
 
-.mic:after, .mic2::after {
-  content: "";
-  top: 7px;
-  left: -17px;
-  height: 26px;
-  width: 26px;
-  background-color: transparent;
-  border: 4px solid white;
-  border-bottom-left-radius: 110px;
-  border-bottom-right-radius: 110px;
-  border-top: 0;
-}
-
-.mic:before, .mic2:before {
-  content: "";
-  top: 33px;
-  left: -2px;
-  border-bottom: 18px solid white;
-  border-left: 2px solid white;
-  border-right: 2px solid white;
-}
-
-.mic-base, .mic-base2 {
-  top: 46px;
-  left: -10px;
-  border-bottom: 5px solid white;
-  border-left: 10px solid white;
-  border-right: 10px solid white;
-}
 
 #drop-area {
   border: 2px dashed white;
@@ -443,11 +400,12 @@ h2 {
   --p: 10;
   --b: 8px;
   --c: darkred;
-  --w: 75px;
+  --w: 75px; /* Breite */
+  --h: 75px; /* Höhe */
   --secondary-color: lightgray;
 
   width: var(--w);
-  aspect-ratio: 1;
+  height: var(--h);
   position: relative;
   display: inline-grid;
   margin: 5px;
@@ -469,13 +427,13 @@ h2 {
     conic-gradient(var(--c) calc(var(--p) * 1%), var(--secondary-color) 0);
   -webkit-mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
   mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
-  
 }
 .pie:after {
   inset: calc(50% - var(--b) / 2);
   background: var(--c);
-  transform: rotate(calc(var(--p) * 3.6deg)) translateY(calc(50% - var(--w) / 2));
+  transform: rotate(calc(var(--p) * 3.6deg)) translateY(calc(50% - var(--h) / 2));
 }
+
 .animate {
   animation: p 1s .5s both;
 }
@@ -485,6 +443,81 @@ h2 {
 .no-round:after {
   content: none;
 }
+.glow-on-hover {
+  margin-left: 10px;
+  width: 70px;
+  height: 70px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #5900be;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  transition: 0.7s;
+}
+
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(45deg, #7a00ff, #183aff, #2183fc, #7a00ff, #183aff, #2183fc, #7a00ff, #183aff, #2183fc);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 1; /* Set opacity to 1 for the default state */
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+  transition: 0.7s;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1; /* Keep opacity to 1 on hover */
+  transition: 0.7s;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #52009e;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+  transition: 0.7s;
+}
+
+.glow-on-hover:hover:after {
+  background: #52009e;
+  opacity: 0; /* Make background transparent on hover */
+  transition: 0.7s;
+}
+
+.glow-on-hover:active {
+  background: #5900be;
+  transition: 0.7s;
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+  transition: 0.7s;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+
+
 @keyframes p {
   from {
     --p: 0;
@@ -501,6 +534,7 @@ h2 {
   background-color: #192733;
   border-radius: 10px;
   padding: 10px 15px 10px 15px;
+  
 }
 
 .hover-text:hover .tooltip-text {
@@ -589,4 +623,20 @@ h2 {
     padding: 6px;
   }
 
+}
+
+/* styles/animations.css */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.container {
+  animation: slideIn 1s ease-out;
 }
