@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="styles/dropdown.css">
     <link rel="stylesheet" href="styles/animations.css">
     <link rel="stylesheet" href="styles/input.css">
+    <link rel="stylesheet" href="styles/tooltip.css">
+    <link rel="stylesheet" href="styles/draganddrop.css">
+    <link rel="stylesheet" href="styles/mobile.css">
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -36,9 +39,11 @@
         <div class="result-grid">     
             <div class="send-wraper">
                 <div class="input-mic-wraper">
-
-                    <input type="text" name="text" class="input" placeholder="schreibe etwas..." id="user-text" />
-                    <button id="mic-button" class="micbutton"><i class="fa-solid fa-microphone"></i></button>
+                    <textarea name="text" class="input" placeholder="schreibe etwas..." id="user-text" ></textarea>
+                    <div class="micdrag">
+                        <button id="mic-button" class="micbutton"><i class="fa-solid fa-microphone"></i></button>
+                        <button id="open-popup" class="micbutton"><i class="fa-solid fa-file"></i></i></button>
+                    </div>
                 </div>
                 <button id="sendbutton" class="glow-on-hover" type="button">Send</button>
             </div>
@@ -48,7 +53,8 @@
                     <h2>Reflexion deiner Gedanken</h2>  
                 </div>
                 <div class="result-bottom">
-                    <p id="reflection" class="result"></p>
+                    <p class="card" id="reflection"></p>
+                    
                     <div class="dropdown">
                         <div role="button" class="button">
                             <div></div>
@@ -119,6 +125,18 @@
         </div>            
     </div>
 </div>
+<div id="popup-container" class="popup-container">
+    <div class="popup-content">
+        <span id="close-popup" class="close-button">&times;</span>
+        <div class="drag-image">
+            <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <h6>Drag & Drop File Here</h6>
+            <span>OR</span>
+            <button>Browse File</button>
+            <input type="file" hidden>
+        </div>
+    </div>
+</div>
 <div id="bg">
     <canvas class="backgroundcanvas"></canvas>
     <canvas class="backgroundcanvas"></canvas>
@@ -134,5 +152,6 @@
 <script src="script/presentation.js"></script>
 <script src="script/transcribe-button.js"></script>
 <script src="script/animation.js"></script>
+<script src="script/draganddrop.js"></script>
 </body>
 </html>

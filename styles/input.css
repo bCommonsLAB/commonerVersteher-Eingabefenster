@@ -1,12 +1,27 @@
 .input {
-    width: 80%;
-    background-color: #3f3f3f98;
-    border: none;
-    padding: 10px;
-    border-radius: 10px;
-    outline: none;
-    color: white;
-  }
+  width: 100%;
+  max-width: 100%;
+  background-color: #3f3f3f98;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  color: white;
+  font-size: 20px;
+  min-height: 140px;
+  box-sizing: border-box;
+  resize: none;
+  resize: none;
+            height: auto;
+            overflow-y: auto;
+}
+
+@media (max-width: 600px) {
+.input {
+  width: 100%;
+  max-width: 100%;
+}
+}
   
   .input:focus {
     animation: rotateShadow 2s infinite linear;
@@ -30,3 +45,18 @@
     }
   }
   
+
+
+
+
+
+  .card {
+    width: 100%;
+    min-height: 50px;
+    border-radius: 30px;
+    background: #212121c2;
+    padding: 15px 20px;
+    font-size: 20px;
+   }
+   
+   

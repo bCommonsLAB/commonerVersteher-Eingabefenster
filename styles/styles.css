@@ -237,12 +237,16 @@ h2 {
 
 }
 .micbutton {
+  max-height: 75px;
+  min-height: 75px;
+  max-width: 80px;
+  min-width: 80px;
   margin-left: 5px;
   position: relative;
   padding: 10px 20px;
   border-radius: 7px;
   border: 1px solid rgb(61, 106, 255);
-  font-size: 14px;
+  font-size: 50px;
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 2px;
@@ -286,7 +290,14 @@ h2 {
   -o-transform: skewX(-20deg);
   transform: skewX(-20deg);
 }
-
+.micdrag{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 160px;
+  width: 75px;
+  margin-right: 5px;
+}
 @keyframes sh02 {
   from {
     opacity: 0;
@@ -310,25 +321,6 @@ h2 {
   transition: box-shadow 0.2s ease-in;
 }
 
-
-
-#drop-area {
-  border: 2px dashed white;
-  border-radius: 100%;
-  margin: 20px 0;
-  width: 100px;
-  height: 100px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 100px;
-  min-height: 100px;
-}
-
-#drop-area input[type="file"] {
-  display: none;
-}
 
 #uploaded-audio {
   margin: 20px 0;
@@ -446,7 +438,7 @@ h2 {
 .glow-on-hover {
   margin-left: 10px;
   width: 70px;
-  height: 70px;
+  height: 160px;
   border: none;
   outline: none;
   color: #fff;

@@ -1,0 +1,54 @@
+@media (max-width: 600px) {
+    /* Anpassung des Eingabebereichs für mobile Geräte */
+    .input-mic-wraper {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+    }
+  
+    .micdrag {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+  
+    .micbutton {
+      margin-top: 20px;
+      flex: 1;
+      font-size: 35px;
+      max-height: 60px;
+      min-height: 60px;
+      max-width: 50%;
+      min-width: 50%;
+    }
+  
+    .input {
+      width: 100%;
+      max-width: 100%;
+    }
+  
+    .send-wraper {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+  
+    .glow-on-hover {
+     height: 50px;
+      width: 100%;
+      margin-left: 0;
+      margin-top: 10px;
+    }
+  
+    /* Anpassung der unteren Kreise */
+    .center {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .pie {
+      margin: 10px 0;
+    }
+  }
