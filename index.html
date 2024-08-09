@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="styles/tooltip.css">
     <link rel="stylesheet" href="styles/draganddrop.css">
     <link rel="stylesheet" href="styles/mobile.css">
+    <link rel="stylesheet" href="styles/cards.css">
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -48,25 +49,32 @@
                 <button id="sendbutton" class="glow-on-hover" type="button">Send</button>
             </div>
             <div class="betweenresult"></div>
-            <div>
                 <div class="result-top">
-                    <h2>Reflexion deiner Gedanken</h2>  
+                    <div>
+                        <h2>Reflexion deiner Gedanken</h2>  
+                    </div>
+                    <div class="select">
+                        <div class="selected">
+                          <span>Select</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" class="arrow">
+                            <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
+                          </svg>
+                        </div>
+                        <div class="options">
+                          <div title="option-1">
+                            <label class="option" for="all"><i class="fa-solid fa-volume-high" onclick="text2Speech('german-summary')"></i>    Vorlesen</label>
+                        </div>
+                        <div class="value" data-value="option-1">
+                            <label class="option" for="option-1"><i class="fa-solid fa-copy" onclick="copyText('german-summary')"></i>    Kopieren</label>
+                        </div>
+                        <div class="value" data-value="option-2">
+                            <label class="option" for="option-2"><i class="fa-solid fa-envelope" onclick="shareText('german-summary')"></i>    Senden</label>
+                          </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="result-bottom">
-                    <p class="card" id="reflection"></p>
-                    
-                    <div class="dropdown">
-                        <div role="button" class="button">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <ul>
-                            <li><a href="#" onclick="text2Speech('german-summary')"><i class="fa-solid fa-volume-high"></i></a></li>
-                            <li><a href="#" onclick="copyText('german-summary')"><i class="fa-solid fa-copy"></i></a></li>
-                            <li><a href="#" onclick="shareText('german-summary')"><i class="fa-solid fa-envelope"></i></a></li>
-                        </ul>
-                    </div>
+                    <p class="cardresult" id="reflection"></p>   
                 </div>
             </div>
         </div>
@@ -75,54 +83,80 @@
                 <h2>Analyse der Commoning Werte</h2>
             </div>
         </div>
-        <div>
         <div class="center" id="center">
-            <div class="pie animate no-round hover-text" id="circle-gemeinschaft" style="--c:rgb(173, 216, 230); --secondary-color: rgb(113, 112, 114);">
-                <div class="prozent" id="gemeinschaft-prozent"></div>
-                <span class="tooltip-text" id="bottom">Gemeinschaftlichkeit</span>
-            </div> 
-                    
-            <div class="pie animate no-round hover-text" id="circle-vertrauen" style="--c:rgb(178, 224, 164); --secondary-color: rgb(113, 112, 114);">
-                <div class="prozent" id="vertrauen-prozent"></div>
-                <span class="tooltip-text" id="bottom">Vertrauenswürdig</span>
+            <div class="cardCommoning">
+                <div class="circlewraper">
+                <div class="pie animate no-round hover-text" id="circle-gemeinschaft" style="--c:rgb(173, 216, 230); --secondary-color: rgb(113, 112, 114);">
+                    <div class="prozent" id="gemeinschaft-prozent"></div>
+                </div> </div>
+                <div class="carddescribt">
+                    <p>Gemeinschaft</p>
+                </div>
             </div>
-            
-            <div class="pie animate no-round hover-text" id="circle-gegenseitig" style="--c:rgb(250, 214, 165); --secondary-color: rgb(113, 112, 114);">
-                <div class="prozent" id="gegenseitig-prozent"></div>
-                <span class="tooltip-text" id="bottom">Gegenseitig</span>
+            <div class="cardCommoning"><div class="circlewraper">
+                <div class="pie animate no-round hover-text" id="circle-vertrauen" style="--c:rgb(178, 224, 164); --secondary-color: rgb(113, 112, 114);">
+                    <div class="prozent" id="vertrauen-prozent"></div>
+                </div></div>
+                <div class="carddescribt">
+                    <p>Vertrauen</p>
+                </div>
             </div>
-            
-            <div class="pie animate no-round hover-text" id="circle-nachhaltig" style="--c:rgb(230, 230, 250); --secondary-color: rgb(113, 112, 114);">
-                <div class="prozent" id="nachhaltig-prozent"></div>
-                <span class="tooltip-text" id="bottom">Nachhaltig</span>
+            <div class="cardCommoning"><div class="circlewraper">
+                <div class="pie animate no-round hover-text" id="circle-gegenseitig" style="--c:rgb(250, 214, 165); --secondary-color: rgb(113, 112, 114);">
+                    <div class="prozent" id="gegenseitig-prozent"></div>
+                </div></div>
+                <div class="carddescribt">
+                    <p>Gegenseitig</p>
+                </div>
             </div>
-            
-            <div class="pie animate no-round hover-text" id="circle-inklusion" style="--c:rgb(255, 209, 220); --secondary-color: rgb(113, 112, 114);">
-                <div class="prozent" id="inklusion-prozent"></div>
-                <span class="tooltip-text" id="bottom">Inklusiv</span>
+            <div class="cardCommoning"><div class="circlewraper">
+                <div class="pie animate no-round hover-text" id="circle-nachhaltig" style="--c:rgb(230, 230, 250); --secondary-color: rgb(113, 112, 114);">
+                    <div class="prozent" id="nachhaltig-prozent"></div>
+                </div></div>
+                <div class="carddescribt">
+                    <p>Nachhaltig</p>
+                </div>
             </div>
-            
+            <div class="cardCommoning"><div class="circlewraper">
+                <div class="pie animate no-round hover-text" id="circle-inklusion" style="--c:rgb(255, 209, 220); --secondary-color: rgb(113, 112, 114);">
+                    <div class="prozent" id="inklusion-prozent"></div>      
+                </div></div>
+                <div class="carddescribt">
+                    <p>Inklusion</p>
+                </div>
+            </div>
         </div>
-        <div id="mustersprachanalyse">
-            <div>
-                <h2>Analyse der Mustersprache des Commoning</h2>
-            </div>
-        </div>
+            <div id="mustersprachanalyse">
+                <div>
+                    <h2>Analyse der Mustersprache des Commoning</h2>
+                </div>
+            </div>       
         <div class="center" id="mustersprache">
-            <div class="pie animate no-round hover-text" id="circle-sozialesmiteinander" style="--c:rgb(152, 255, 152); --secondary-color: rgb(113, 112, 114);">
-                <div class="prozent" id="sozialesmiteinander-prozent"></div>
-                <span class="tooltip-text" id="bottom">Soziales Miteinander</span>
-            </div> 
-            <div class="pie animate no-round hover-text" id="circle-gleichrangigeselbstorganisation" style="--c:rgb(255, 182, 193); --secondary-color: rgb(113, 112, 114);">
-                <div class="prozent" id="gleichrangigeselbstorganisation-prozent"></div>
-                <span class="tooltip-text" id="bottom">Gleichrangige Selbst Organisation</span>
+            <div class="cardMustersprache"><div class="circlewraper">
+                <div class="pie animate no-round hover-text" id="circle-sozialesmiteinander" style="--c:rgb(152, 255, 152); --secondary-color: rgb(113, 112, 114);">
+                    <div class="prozent" id="sozialesmiteinander-prozent"></div>
+                </div></div>
+                <div class="carddescribt">
+                    <p>Soziales Miteinander</p>
+                </div>
             </div>
-            <div class="pie animate no-round hover-text" id="circle-sorgendesselbstbestimmteswirtschaften" style="--c:rgb(255, 245, 186); --secondary-color: rgb(113, 112, 114);">
-                <div class="prozent" id="sorgendesselbstbestimmteswirtschaften-prozent"></div>
-                <span class="tooltip-text" id="bottom">Sorgendes Selbstbestimmtes Wirtschaften</span>
-            </div>
-        </div>    
-        </div>            
+            <div class="cardMustersprache"><div class="circlewraper">
+                <div class="pie animate no-round hover-text" id="circle-gleichrangigeselbstorganisation" style="--c:rgb(255, 182, 193); --secondary-color: rgb(113, 112, 114);">
+                    <div class="prozent" id="gleichrangigeselbstorganisation-prozent"></div>
+                </div></div>
+                <div class="carddescribt">
+                    <p>Gleichrangige selbst organisation</p>
+                </div>
+            </div>   
+            <div class="cardMustersprache"><div class="circlewraper">
+                <div class="pie animate no-round hover-text" id="circle-sorgendesselbstbestimmteswirtschaften" style="--c:rgb(255, 245, 186); --secondary-color: rgb(113, 112, 114);">
+                    <div class="prozent" id="sorgendesselbstbestimmteswirtschaften-prozent"></div>
+                </div></div>
+                <div class="carddescribt">
+                    <p>Sorgendes Selbstbe- stimmtes Wirtschaften</p>
+                </div>
+            </div>    
+        </div>        
     </div>
 </div>
 <div id="popup-container" class="popup-container">

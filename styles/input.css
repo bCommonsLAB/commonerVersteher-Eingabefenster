@@ -12,51 +12,55 @@
   box-sizing: border-box;
   resize: none;
   resize: none;
-            height: auto;
-            overflow-y: auto;
+  height: auto;
+  overflow-y: auto;
 }
 
 @media (max-width: 600px) {
-.input {
-  width: 100%;
-  max-width: 100%;
-}
-}
-  
-  .input:focus {
-    animation: rotateShadow 2s infinite linear;
-  }
-  
-  @keyframes rotateShadow {
-    0% {
-      box-shadow: -2px -2px 0px 0px #aa00ff, 2px 2px 0px 0px #3700ff;
-    }
-    25% {
-      box-shadow: -2px 2px 0px 0px #aa00ff, 2px -2px 0px 0px #3700ff;
-    }
-    50% {
-      box-shadow: 2px 2px 0px 0px #aa00ff, -2px -2px 0px 0px #3700ff;
-    }
-    75% {
-      box-shadow: 2px -2px 0px 0px #aa00ff, -2px 2px 0px 0px #3700ff;
-    }
-    100% {
-      box-shadow: -2px -2px 0px 0px #aa00ff, 2px 2px 0px 0px #3700ff;
-    }
-  }
-  
-
-
-
-
-
-  .card {
+  .input {
     width: 100%;
-    min-height: 50px;
-    border-radius: 30px;
-    background: #212121c2;
-    padding: 15px 20px;
-    font-size: 20px;
-   }
-   
-   
+    max-width: 100%;
+  }
+}
+
+.input:focus {
+  animation: rotateShadow 2s infinite linear;
+}
+
+@keyframes rotateShadow {
+  0% {
+    box-shadow:
+      -2px -2px 0px 0px #aa00ff,
+      2px 2px 0px 0px #3700ff;
+  }
+  25% {
+    box-shadow:
+      -2px 2px 0px 0px #aa00ff,
+      2px -2px 0px 0px #3700ff;
+  }
+  50% {
+    box-shadow:
+      2px 2px 0px 0px #aa00ff,
+      -2px -2px 0px 0px #3700ff;
+  }
+  75% {
+    box-shadow:
+      2px -2px 0px 0px #aa00ff,
+      -2px 2px 0px 0px #3700ff;
+  }
+  100% {
+    box-shadow:
+      -2px -2px 0px 0px #aa00ff,
+      2px 2px 0px 0px #3700ff;
+  }
+}
+
+.cardresult {
+  margin-top: -80px;
+  width: 100%;
+  min-height: 50px;
+  border-radius: 30px;
+  background: #3f3f3f98;
+  padding: 15px 20px;
+  font-size: 20px;
+}

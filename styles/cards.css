@@ -1,0 +1,26 @@
+.cardCommoning  {
+    width: 10vh;
+    height: fit-content;
+    border-radius: 20px;
+    background: #313131;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+   }
+.cardMustersprache  {
+    width: 10vh;
+    height: 100%;
+    border-radius: 20px;
+    background: #313131;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+   }
+.carddescribt p {
+    
+    font-family: "Radio Canada Big", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}

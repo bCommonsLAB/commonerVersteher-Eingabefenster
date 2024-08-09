@@ -10,13 +10,10 @@
   }
 }
 
-.container, header {
+.container,
+header {
   animation: slideInWebLoad 1s ease-out;
 }
-
-
-
-
 
 @keyframes slideIn {
   from {

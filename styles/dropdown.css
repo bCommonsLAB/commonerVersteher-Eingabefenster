@@ -1,92 +1,98 @@
-:root {
-  --button-background: rgb(109, 30, 255);
-  --button-color: rgb(0, 0, 0);
-  
-  --dropdown-highlight: rgb(224, 224, 224);
-  --dropdown-width: 50px;
-  --dropdown-background: rgb(87, 87, 87);
-  --dropdown-color: rgb(247, 247, 247);
-}
-
-.button {
-  /* Frame */
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 50px;
-  box-sizing: border-box;
-  /* Style */
-  border: none;
-  background: var(--button-background);
-  color: var(--button-color);
+.select {
+  margin-bottom: 0px;
+  width: 100px;
   cursor: pointer;
-  margin-top: -9px;
-}
-.button div {
-  width: 20px;
-  height: 2px;
-  background-color: black;
-  margin: 6px 0;
-}
-.button:active {
-  filter: brightness(75%);
-}
-
-
-.dropdown {
   position: relative;
+  transition: 300ms;
+  color: white;
+  overflow: hidden;
+}
+
+.selected {
+  background-color: #2a2f3b;
+  padding: 5px;
+  margin-bottom: 3px;
+  border-radius: 5px;
+  position: relative;
+  z-index: 100000;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.arrow {
+  position: relative;
+  right: 0px;
+  height: 10px;
+  transform: rotate(-90deg);
+  width: 25px;
+  fill: white;
+  z-index: 100000;
+  transition: 300ms;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #2a2f3b;
+  position: relative;
+  top: -100px;
+  opacity: 0;
+  transition: 300ms;
+}
+
+.select:hover > .options {
+  opacity: 1;
+  top: 0;
+}
+
+.select:hover > .selected .arrow {
+  transform: rotate(0deg);
+}
+
+.option {
+  border-radius: 5px;
+  padding: 5px;
+  transition: 300ms;
+  background-color: #2a2f3b;
+  width: 150px;
+  font-size: 15px;
+}
+.option:hover {
+  background-color: #323741;
+}
+
+.options input[type="radio"] {
+  display: none;
+}
+
+.options label {
   display: inline-block;
 }
-
-.dropdown ul {
-  position: absolute;
-  margin: 20px 0 0 0;
-  padding: 20px 0;
-  width: var(--dropdown-width);
-  left: 50%;
-  margin-left: calc((var(--dropdown-width) / 2) * -1);
-  box-sizing: border-box;
-  z-index: 2;
-  background: var(--dropdown-background);
-  border-radius: 6px;
-  list-style: none;
-  display: none; 
+.options label::before {
+  content: attr(data-txt);
 }
 
-.dropdown ul li {
-  padding: 0;
-  margin: 0;
-  text-align: center;
+.options input[type="radio"]:checked + label {
+  display: none;
 }
 
-.dropdown ul li a:link, .dropdown ul li a:visited {
-  display: inline-block;
-  padding: 10px 0.8rem;
-  width: 100%;
-  box-sizing: border-box;
-  color: var(--dropdown-color);
-  text-decoration: none;
+.options input[type="radio"]#all:checked + label {
+  display: none;
 }
 
-.dropdown ul li a:hover {
-  background-color: var(--dropdown-highlight);
-  color: var(--dropdown-background);
+.select:has(.options input[type="radio"]#all:checked) .selected::before {
+  content: attr(data-default);
 }
-
-/* Dropdown triangle */
-.dropdown ul::before {
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  top: -10px;
-  left: 50%;
-  margin-left: -10px;
-  border-style: solid;
-  border-width: 0 10px 10px 10px;
-  border-color: transparent transparent var(--dropdown-background) transparent;
+.select:has(.options input[type="radio"]#option-1:checked) .selected::before {
+  content: attr(data-one);
 }
-
-/* Show dropdown on hover */
-.dropdown:hover ul {
-  display: block;
+.select:has(.options input[type="radio"]#option-2:checked) .selected::before {
+  content: attr(data-two);
+}
+.select:has(.options input[type="radio"]#option-3:checked) .selected::before {
+  content: attr(data-three);
 }

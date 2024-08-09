@@ -1,6 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 
-html { height: 100%; }
+html {
+  height: 100%;
+}
 
 body {
   display: flex;
@@ -64,6 +66,7 @@ body,
 .center {
   display: flex;
   justify-content: space-evenly;
+  width: 100%;
 }
 .mustersprache {
   display: flex;
@@ -85,21 +88,21 @@ header {
   top: 0;
   left: 0;
   z-index: 1000;
-  height:7vh;
+  height: 7vh;
 }
 
-.seitentitel{
+.seitentitel {
   display: flex;
   justify-content: space-around;
 }
 
-.einführung{
+.einführung {
   display: flex;
   justify-content: space-around;
   margin-top: 10px;
 }
 
-.titel{
+.titel {
   margin: 0;
   padding-left: 10px;
   padding-right: 10px;
@@ -117,17 +120,15 @@ header {
   font-weight: 100;
   border: 1px white dashed;
   border-radius: 10px;
-  transition: height 0.7s, background-color 0.7s;
+  transition:
+    height 0.7s,
+    background-color 0.7s;
   background-color: #7b559f;
 }
 
 .einfuehrungstext.expanded {
   height: auto;
 }
-
-
-
-
 
 #audioplayer {
   background-color: #000;
@@ -143,7 +144,7 @@ header {
   padding: 20px;
   margin-top: 100px;
   text-align: left;
-  max-height: 70%;
+  max-height: 80%;
   overflow-y: scroll;
 }
 
@@ -168,16 +169,19 @@ p {
   margin-top: 20px;
   width: 100%;
 }
-.result-bottom{
+.result-bottom {
   display: flex;
   justify-content: space-between;
   width: 100%;
   flex-direction: row;
 }
-.resulttop{
+.result-top {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   margin-bottom: 0.2px;
+  width: 100%;
+  
 }
 .result {
   background-color: rgba(255, 255, 255, 0.685);
@@ -193,7 +197,7 @@ p {
   margin-top: 0px;
   width: 90%;
 }
-.send-wraper{
+.send-wraper {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -205,7 +209,7 @@ p {
   font-size: 17px;
   text-align: center;
 }
-.betweenresult{
+.betweenresult {
   margin-top: 30px;
 }
 
@@ -230,11 +234,10 @@ p {
 h2 {
   color: white;
 }
-.input-mic-wraper{
+.input-mic-wraper {
   display: flex;
-  justify-content:left;
+  justify-content: left;
   width: 100%;
-
 }
 .micbutton {
   max-height: 75px;
@@ -274,7 +277,7 @@ h2 {
 }
 
 .micbutton::before {
-  content: '';
+  content: "";
   display: block;
   width: 0px;
   height: 86%;
@@ -290,7 +293,7 @@ h2 {
   -o-transform: skewX(-20deg);
   transform: skewX(-20deg);
 }
-.micdrag{
+.micdrag {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -321,7 +324,6 @@ h2 {
   transition: box-shadow 0.2s ease-in;
 }
 
-
 #uploaded-audio {
   margin: 20px 0;
   text-align: center;
@@ -344,7 +346,7 @@ h2 {
 }
 
 .upload-arrow::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 35px;
   left: 50%;
@@ -355,7 +357,7 @@ h2 {
 }
 
 .upload-arrow::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 8px;
   left: 13px;
@@ -363,28 +365,28 @@ h2 {
   height: 34px;
   background-color: #fff;
 }
-#mustersprachanalyse{
+#mustersprachanalyse {
   width: 100%;
-  text-align:center;
+  text-align: center;
   height: fit-content;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
-#sprachanalyse{
+#sprachanalyse {
   width: 100%;
-  text-align:center;
+  text-align: center;
   height: fit-content;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 @property --p {
-  syntax: '<number>';
+  syntax: "<number>";
   inherits: true;
   initial-value: 0;
 }
-.pro{
+.pro {
   font-size: 0.5;
 }
 .pie {
@@ -415,22 +417,33 @@ h2 {
 .pie:before {
   inset: 0;
   background:
-    radial-gradient(farthest-side, var(--c) 98%, #0000) top/var(--b) var(--b) no-repeat,
+    radial-gradient(farthest-side, var(--c) 98%, #0000) top/var(--b) var(--b)
+      no-repeat,
     conic-gradient(var(--c) calc(var(--p) * 1%), var(--secondary-color) 0);
-  -webkit-mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
-  mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    #0000 calc(99% - var(--b)),
+    #000 calc(100% - var(--b))
+  );
+  mask: radial-gradient(
+    farthest-side,
+    #0000 calc(99% - var(--b)),
+    #000 calc(100% - var(--b))
+  );
 }
 .pie:after {
   inset: calc(50% - var(--b) / 2);
   background: var(--c);
-  transform: rotate(calc(var(--p) * 3.6deg)) translateY(calc(50% - var(--h) / 2));
+  transform: rotate(calc(var(--p) * 3.6deg))
+    translateY(calc(50% - var(--h) / 2));
 }
 
 .animate {
-  animation: p 1s .5s both;
+  animation: p 1s 0.5s both;
 }
 .no-round:before {
   background-size: 0 0, auto;
+  width: 70px;
 }
 .no-round:after {
   content: none;
@@ -451,8 +464,19 @@ h2 {
 }
 
 .glow-on-hover:before {
-  content: '';
-  background: linear-gradient(45deg, #7a00ff, #183aff, #2183fc, #7a00ff, #183aff, #2183fc, #7a00ff, #183aff, #2183fc);
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #7a00ff,
+    #183aff,
+    #2183fc,
+    #7a00ff,
+    #183aff,
+    #2183fc,
+    #7a00ff,
+    #183aff,
+    #2183fc
+  );
   position: absolute;
   top: -2px;
   left: -2px;
@@ -463,7 +487,7 @@ h2 {
   height: calc(100% + 4px);
   animation: glowing 20s linear infinite;
   opacity: 1; /* Set opacity to 1 for the default state */
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   border-radius: 10px;
   transition: 0.7s;
 }
@@ -475,7 +499,7 @@ h2 {
 
 .glow-on-hover:after {
   z-index: -1;
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 100%;
@@ -503,12 +527,16 @@ h2 {
 }
 
 @keyframes glowing {
-  0% { background-position: 0 0; }
-  50% { background-position: 400% 0; }
-  100% { background-position: 0 0; }
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }
-
-
 
 @keyframes p {
   from {
@@ -526,11 +554,10 @@ h2 {
   background-color: #192733;
   border-radius: 10px;
   padding: 10px 15px 10px 15px;
-  
 }
 
 .hover-text:hover .tooltip-text {
-    visibility: visible;
+  visibility: visible;
 }
 
 #bottom {
@@ -541,7 +568,7 @@ h2 {
 .hover-text {
   position: relative;
   display: inline-block;
-  margin: 40px;
+  margin: 10px;
   font-family: Arial;
   text-align: center;
 }
@@ -555,7 +582,7 @@ h2 {
   }
 }
 @media (max-height: 1280px) {
-  header{
+  header {
     height: 100px;
   }
 }
@@ -593,14 +620,10 @@ h2 {
     padding: 8px;
   }
 
-  .center{
-    flex-direction: column;
-  }
+
 }
 
 @media (max-width: 480px) {
- 
-
   .btn {
     font-size: 12px;
     padding: 6px 12px;
@@ -614,7 +637,6 @@ h2 {
     font-size: 12px;
     padding: 6px;
   }
-
 }
 
 /* styles/animations.css */
